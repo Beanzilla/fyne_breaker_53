@@ -83,6 +83,7 @@ func main() {
 	test1 := widget.NewLabel("Hello and welcome to Testapp #53")
 
 	go func() {
+	EXIT_GOROUTE:
 		for {
 			select {
 			case <-tick.C:
@@ -90,7 +91,7 @@ func main() {
 				test1.Text = fmt.Sprintf("Hello and welcome to Testapp #53\nClick #%d", clicks)
 				test1.Refresh()
 			case <-stop:
-				break
+				break EXIT_GOROUTE
 			}
 		}
 	}()
